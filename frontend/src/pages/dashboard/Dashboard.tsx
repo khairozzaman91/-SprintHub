@@ -1,5 +1,21 @@
-function Dashboard() {
-  return <h1>Dashboard</h1>;
+import Sidebar from "../../components/layout/Sidebar";
+import Navbar from "../../components/layout/Navbar";
+
+function DashboardLayout() {
+  return (
+    <div className="flex min-h-screen">
+      <Sidebar />
+
+      <div className="flex flex-1 flex-col">
+        <Navbar />
+
+        <main className="flex-1 p-6">
+          Content
+        </main>
+      </div>
+    </div>
+  );
 }
 
-export default Dashboard;
+
+export default DashboardLayout;
