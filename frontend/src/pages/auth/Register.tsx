@@ -1,8 +1,19 @@
+import { Link, useNavigate } from "react-router-dom";
+import type { FormEvent } from "react";
+
 function Register() {
+  const navigate = useNavigate();
+
+  const handleRegister = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // TODO: Backend API Register
+    navigate("/");
+  };
+
   return (
     <main className="flex min-h-screen items-center justify-center bg-slate-100 px-4 py-10">
       <section className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
-        {/* Logo */}
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-violet-600">SprintHub</h1>
           <p className="mt-2 text-sm text-slate-500">
@@ -10,9 +21,7 @@ function Register() {
           </p>
         </div>
 
-        {/* Form */}
-        <form className="space-y-5">
-          {/* Full Name */}
+        <form onSubmit={handleRegister} className="space-y-5">
           <div>
             <label
               htmlFor="name"
@@ -29,7 +38,6 @@ function Register() {
             />
           </div>
 
-          {/* Email */}
           <div>
             <label
               htmlFor="email"
@@ -46,7 +54,6 @@ function Register() {
             />
           </div>
 
-          {/* Password */}
           <div>
             <label
               htmlFor="password"
@@ -63,7 +70,6 @@ function Register() {
             />
           </div>
 
-          {/* Confirm Password */}
           <div>
             <label
               htmlFor="confirmPassword"
@@ -80,7 +86,6 @@ function Register() {
             />
           </div>
 
-          {/* Terms */}
           <label className="flex items-start gap-2 text-sm text-slate-600">
             <input type="checkbox" className="mt-1" />
             <span>
@@ -94,7 +99,6 @@ function Register() {
             </span>
           </label>
 
-          {/* Register Button */}
           <button
             type="submit"
             className="w-full rounded-lg bg-violet-600 py-3 font-semibold text-white transition hover:bg-violet-700"
@@ -103,27 +107,24 @@ function Register() {
           </button>
         </form>
 
-        {/* Divider */}
         <div className="my-6 flex items-center">
           <div className="h-px flex-1 bg-slate-300"></div>
           <span className="px-3 text-sm text-slate-400">OR</span>
           <div className="h-px flex-1 bg-slate-300"></div>
         </div>
 
-        {/* Google Button */}
         <button className="w-full rounded-lg border border-slate-300 py-3 font-medium text-slate-700 transition hover:bg-slate-100">
           Continue with Google
         </button>
 
-        {/* Login Link */}
         <p className="mt-6 text-center text-sm text-slate-500">
           Already have an account?{" "}
-          <button
-            type="button"
+          <Link
+            to="/login"
             className="font-semibold text-violet-600 hover:text-violet-700"
           >
             Login
-          </button>
+          </Link>
         </p>
       </section>
     </main>
