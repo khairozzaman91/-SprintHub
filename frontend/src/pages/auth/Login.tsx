@@ -1,4 +1,16 @@
+import { Link, useNavigate } from "react-router-dom";
+import type { FormEvent } from "react";
+
 function Login() {
+  const navigate = useNavigate();
+
+  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // TODO: Backend API Login
+    navigate("/");
+  };
+
   return (
     <main className="flex min-h-screen items-center justify-center bg-slate-100 px-4">
       <section className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
@@ -11,8 +23,7 @@ function Login() {
         </div>
 
         {/* Form */}
-        <form className="space-y-5">
-          {/* Email */}
+        <form onSubmit={handleLogin} className="space-y-5">
           <div>
             <label
               htmlFor="email"
@@ -29,7 +40,6 @@ function Login() {
             />
           </div>
 
-          {/* Password */}
           <div>
             <label
               htmlFor="password"
@@ -46,7 +56,6 @@ function Login() {
             />
           </div>
 
-          {/* Remember Me */}
           <div className="flex items-center justify-between text-sm">
             <label className="flex items-center gap-2 text-slate-600">
               <input type="checkbox" />
@@ -61,7 +70,6 @@ function Login() {
             </button>
           </div>
 
-          {/* Login Button */}
           <button
             type="submit"
             className="w-full rounded-lg bg-violet-600 py-3 font-semibold text-white transition hover:bg-violet-700"
@@ -70,27 +78,24 @@ function Login() {
           </button>
         </form>
 
-        {/* Divider */}
         <div className="my-6 flex items-center">
           <div className="h-px flex-1 bg-slate-300"></div>
           <span className="px-3 text-sm text-slate-400">OR</span>
           <div className="h-px flex-1 bg-slate-300"></div>
         </div>
 
-        {/* Google Button */}
         <button className="w-full rounded-lg border border-slate-300 py-3 font-medium text-slate-700 transition hover:bg-slate-100">
           Continue with Google
         </button>
 
-        {/* Register */}
         <p className="mt-6 text-center text-sm text-slate-500">
           Don't have an account?{" "}
-          <button
-            type="button"
+          <Link
+            to="/register"
             className="font-semibold text-violet-600 hover:text-violet-700"
           >
             Register
-          </button>
+          </Link>
         </p>
       </section>
     </main>
